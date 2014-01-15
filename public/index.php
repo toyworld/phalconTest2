@@ -17,9 +17,21 @@
 				 		$config->application->modelsDir,
 					)
 				 )->register();
-		 
+		
+		//종속성계채 생성
+	    $di = new Phalcon\DI\FactoryDefault();
+		
+		//세션 시작 di선언
+		$di->set('session', function(){
+			$session = new Phalcon\Session\Adapter\Files();
+			$session->start();
+			return $session;
+		});
+		
+		
 		$app = new \Phalcon\Mvc\Application($di);
-		echo $app->handle()->getContent(); 
+		echo $app->handle()->getContent();  //Create a DI
+	    $di = new Phalcon\DI\FactoryDefault();
 	 }catch(\Phalcon\Exception $e){
 	 	echo "PhalconException: ", $e->getMessage();
 	 }
