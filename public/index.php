@@ -4,17 +4,18 @@
 	 * make man : chomark
 	 * make tools : phalcon
 	 * * */
+	
 	 try{
 	 	 $config = new Phalcon\Config\Adapter\Ini('../app/config/config.ini');
 	 
 		 //로더 설정
-		 $load = new \Phalcon\Loader();
-		 $load->registerDirs(
+		 $loader = new \Phalcon\Loader();
+		 $loader->registerDirs(
 				 	array(
 				 		$config->application->controllersDir,
 				 		$config->application->pluginsDir,
 				 		$config->application->libraryDir,
-				 		$config->application->modelsDir,
+				 		$config->application->modelsDir
 					)
 				 )->register();
 		
@@ -32,7 +33,11 @@
 			$session->start();
 			return $session;
 		});
-		
+		$di->set('url', function(){
+		        $url = new \Phalcon\Mvc\Url();
+		        $url->setBaseUri('/');
+		        return $url;
+      	});
 		//데이터베이스 생성
 		$di->set('db', function() use ($config){
 			return new \Phalcon\DB\Adapter\PDO\Mysql(array(
