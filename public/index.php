@@ -28,6 +28,15 @@
 				return $session;
 			});
 			
+			$di->set('dispatcher', function() use ($di) {
+   			    $eventsManager = $di->getShared('eventsManager');
+                $security = new Security($di);
+				$eventsManager->attach('dispatch', $security);
+			    $dispatcher = new Phalcon\Mvc\Dispatcher();
+				$dispatcher->setEventsManager($eventsManager);
+			    return $dispatcher;
+			});
+			
 			$di->set('url', function(){
 			        $url = new \Phalcon\Mvc\Url();
 			        $url->setBaseUri('/');
