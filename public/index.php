@@ -28,10 +28,20 @@
 			return $session;
 		});
 		
+		//데이터베이스 생성
+		$di->set('db', function() use ($config){
+			return new \Phalcon\DB\Adapter\PDO\Mysql(array(
+				"host"		=> $config->database->host,
+				"username"	=> $config->database->username,
+				"password"	=> $config->database->password,
+				"dbname"	=> $config->database->name
+			));
+		});
 		
 		$app = new \Phalcon\Mvc\Application($di);
-		echo $app->handle()->getContent();  //Create a DI
-	    $di = new Phalcon\DI\FactoryDefault();
+		echo $app->handle()->getContent();  
+		
+		
 	 }catch(\Phalcon\Exception $e){
 	 	echo "PhalconException: ", $e->getMessage();
 	 }
