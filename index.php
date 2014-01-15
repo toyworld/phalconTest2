@@ -5,5 +5,16 @@
 	 * make tools : phalcon
 	 * * */
 	 $config = new Phalcon\Config\Adapter\Ini('../app/config/config.ini');
-
+	 
+	 //로드 설정
+	 $load = new \Phalcon\Loader();
+	 $load->registerDirs(
+	 	array(
+	 		$config->application->controllersDir,
+	 		$config->application->pluginsDir,
+	 		$config->application->libraryDir,
+	 		$config->application->modelsDir,
+		)
+	 )->register();
+	 
 ?>
