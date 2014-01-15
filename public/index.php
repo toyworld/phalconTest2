@@ -20,7 +20,12 @@
 		
 		//종속성계채 생성
 	    $di = new Phalcon\DI\FactoryDefault();
-		
+		//뷰서비스 실시
+		$di->set('view', function(){
+	        $view = new \Phalcon\Mvc\View();
+	        $view->setViewsDir('../app/views/');
+	        return $view;
+	    });
 		//세션 시작 di선언
 		$di->set('session', function(){
 			$session = new Phalcon\Session\Adapter\Files();
