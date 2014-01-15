@@ -6,7 +6,7 @@
 	 * * */
 	 $config = new Phalcon\Config\Adapter\Ini('../app/config/config.ini');
 	 
-	 //·Îµå ¼³Á¤
+	 //ë¡œë” ì„¤ì •
 	 $load = new \Phalcon\Loader();
 	 $load->registerDirs(
 	 	array(
