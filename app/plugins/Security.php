@@ -60,9 +60,9 @@
 	 {
 	 	$auth = $this->session->get('auth'); //세션 정보 로드
 		if(!$auth){ //인증된 부분이 없을시 방문자로 표시
-			$role = "방문자";
+			$role = "Guests";
 		}else{ //인증된 정보가 있을시
-			$role = "회원";
+			$role = "Users";
 		}
 		
 		$controller = $dispatcher->getControllerName();

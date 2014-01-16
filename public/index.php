@@ -53,7 +53,10 @@
 					"dbname"	=> $config->database->name
 				));
 			});
-			
+			//엘리먼트 생성
+			$di->set('elements', function(){
+			    return new Elements();
+			});
 			$application = new \Phalcon\Mvc\Application($di);
 			echo $application->handle()->getContent();  
 		
