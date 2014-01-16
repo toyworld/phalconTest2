@@ -1,4 +1,4 @@
-<?
+<?php
  use Phalcon\Events\Event,
  	 Phalcon\Mvc\User\Plugin,
  	 Phalcon\Mvc\Dispatcher,
@@ -23,6 +23,7 @@
 		$allowed	= $acl->isAllowed($role, $controller, $action);
 		if($allowed != Acl::ALLOW){
 			$this->flash->error("이 모듈은 당신은 사용할수 없습니다.");
+			//사용이 불가능할때는 index컨트롤러로 이동해서  indexAction 함수를 사용해라
 			$dispatcher->forword(array(
 				'controller'	=> 'index',
 				'action'		=> 'index'
