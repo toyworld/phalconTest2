@@ -2,7 +2,7 @@
 
 	class IndexController extends ControllerBase
 	{
-		public function initalize()
+		public function initialize()
 		{
 			$this->view->setTemplateAfter('main');
 			Phalcon\Tag::setTitel('welcome');

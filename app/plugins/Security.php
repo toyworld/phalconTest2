@@ -6,6 +6,11 @@
 	 
  class Security extends  Plugin
  {
+ 	 public function __construct($dependencyInjector)
+	 {
+	 	$this->__dependencyInjector = $dependencyInjector;
+	 }
+	 
  	 public function getAcl()
 	 {
 	 	if (!isset($this->persistent->acl)) {
